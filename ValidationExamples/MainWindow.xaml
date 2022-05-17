@@ -1,0 +1,58 @@
+﻿<Window
+    x:Class="ValidationExamples.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:validation="using:WinUIValidation"
+    mc:Ignorable="d">
+
+    <Border CornerRadius="8" BorderBrush="MediumBlue" BorderThickness="1" HorizontalAlignment="Center" Width="400" VerticalAlignment="Center" Padding="20">
+        <validation:Form Model="{x:Bind SampleModel}" OnValidSubmit="{x:Bind SampleModel.SampleCommand}">
+            <StackPanel >
+                
+                <StackPanel.Resources>
+                    <Style TargetType="validation:ValidationFor">
+                        <Setter Property="Margin" Value="0,0,0,20" />
+                    </Style>
+                </StackPanel.Resources>
+                
+                <TextBlock>Standard validation</TextBlock>
+                <validation:ValidationFor PropertyName="RequiredText" Grid.Column="1">
+                    <TextBox Text="{x:Bind SampleModel.RequiredText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </validation:ValidationFor>
+
+                <TextBlock>Validation message without content / red border</TextBlock>
+                <TextBox Text="{x:Bind SampleModel.RequiredText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                <validation:ValidationFor PropertyName="RequiredText" />
+
+                <TextBlock>Validation without message</TextBlock>
+                <validation:ValidationFor PropertyName="RequiredText" HideValidationMessage="True">
+                    <TextBox Text="{x:Bind SampleModel.RequiredText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </validation:ValidationFor>
+
+                <TextBlock>Nested property standard</TextBlock>
+                <validation:ValidationFor PropertyName="Nested.Person.Name">
+                    <TextBox Text="{x:Bind SampleModel.Nested.Person.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </validation:ValidationFor>
+
+                <TextBlock>Nested property -> ignore nested object == null</TextBlock>
+                <validation:ValidationFor PropertyName="Nested.Person.Name" IgnoreUnsetNestedClasses="True">
+                    <TextBox Text="{x:Bind SampleModel.Nested.Person.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                </validation:ValidationFor>
+
+                <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                    <Button Command="{x:Bind SampleModel.CreatePersonCommand}" Margin="0,0,20,0">Create nested object</Button>
+                    <Button Command="{x:Bind SampleModel.DeleteCommand}">Destroy nested object</Button>
+                </StackPanel>
+                
+                <validation:SubmitButton Content="Submit" Grid.Row="9" Grid.ColumnSpan="2" HorizontalAlignment="Stretch" Margin="0,20,0,10"/>
+
+                <TextBlock Foreground="Blue" Text="{x:Bind SampleModel.Result, Mode=OneWay}" FontSize="16" TextAlignment="Center" TextWrapping="Wrap"/>
+
+            </StackPanel>
+        </validation:Form>
+    </Border>
+
+
+</Window>

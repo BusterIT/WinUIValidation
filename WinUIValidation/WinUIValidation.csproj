@@ -1,0 +1,65 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
+    <TargetPlatformMinVersion>10.0.17763.0</TargetPlatformMinVersion>
+    <RootNamespace>WinUIValidation</RootNamespace>
+    <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
+    <UseWinUI>True</UseWinUI>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Authors>Sebastian Seifert</Authors>
+    <Description>Form validation for WinUI3 projects.
+
+- show validation messages in UI (optional)
+- adds a red border to invalid contents (optional)
+- very similar using like ASP validation forms
+- just works with DataAnnotation validation
+- do not requires to implement IDataErrorInfo
+- supports complex model validation (e.g.: ViewModel.Person.Name)
+- inherits a submit button that will be disabled on invalid model
+- form inherits a valid submit command that implements ICommand interface </Description>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <SignAssembly>False</SignAssembly>
+    <Copyright>Copyright 2022 (c) Sebastian Seifert. All rights reserved.</Copyright>
+    <PackageProjectUrl>https://github.com/BusterIT/WinUIValidation</PackageProjectUrl>
+    <PackageIcon>icon.png</PackageIcon>
+    <RepositoryUrl>https://github.com/BusterIT/WinUIValidation</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>WinUI;Validation;Form;Validate;XAML;CSharp;NET6;MAUI</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <EnableNETAnalyzers>False</EnableNETAnalyzers>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Form.xaml" />
+    <None Remove="ValidationFor.xaml" />
+  </ItemGroup>
+
+  <ItemGroup>
+      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
+      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="icon.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="ValidationFor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Update="Form.xaml">
+      <XamlRuntime>$(DefaultXamlRuntime)</XamlRuntime>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Update="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+</Project>
