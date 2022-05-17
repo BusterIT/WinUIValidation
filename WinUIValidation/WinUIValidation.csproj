@@ -9,13 +9,13 @@
     <Authors>Sebastian Seifert</Authors>
     <Description>Form validation for WinUI3 projects.
 
-- show validation messages in UI (optional)
-- adds a red border to invalid contents (optional)
+- show validation messages in UI
+- adds a red border to invalid contents
 - very similar using like ASP validation forms
-- just works with DataAnnotation validation
-- do not requires to implement IDataErrorInfo
+- just works with DataAnnotation validation attributes
+- does not requires to implement IDataErrorInfo
 - supports complex model validation (e.g.: ViewModel.Person.Name)
-- inherits a submit button that will be disabled on invalid model
+- inherits a submit button which will be disabled on invalid models
 - form inherits a valid submit command that implements ICommand interface </Description>
     <ImplicitUsings>enable</ImplicitUsings>
     <SignAssembly>False</SignAssembly>
