@@ -13,7 +13,7 @@
 - adds a red border to invalid contents
 - very similar using like ASP validation forms
 - just works with DataAnnotation validation attributes
-- does not requires to implement IDataErrorInfo
+- does not requires to implement INotifyDataErrorInfo
 - supports complex model validation (e.g.: ViewModel.Person.Name)
 - inherits a submit button which will be disabled on invalid models
 - form inherits a valid submit command that implements ICommand interface </Description>
@@ -21,29 +21,23 @@
     <SignAssembly>False</SignAssembly>
     <Copyright>Copyright 2022 (c) Sebastian Seifert. All rights reserved.</Copyright>
     <PackageProjectUrl>https://github.com/BusterIT/WinUIValidation</PackageProjectUrl>
-    <PackageIcon>icon.png</PackageIcon>
     <RepositoryUrl>https://github.com/BusterIT/WinUIValidation</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
     <PackageTags>WinUI;Validation;Form;Validate;XAML;CSharp;NET6;MAUI</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <EnableNETAnalyzers>False</EnableNETAnalyzers>
+    <Version>1.0.4</Version>
   </PropertyGroup>
+
   <ItemGroup>
     <None Remove="Form.xaml" />
     <None Remove="ValidationFor.xaml" />
   </ItemGroup>
 
   <ItemGroup>
-      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.3" />
-      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.197" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Update="icon.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
+      <PackageReference Include="Microsoft.WindowsAppSDK" Version="1.0.0" />
+      <PackageReference Include="Microsoft.Windows.SDK.BuildTools" Version="10.0.22000.194" />
   </ItemGroup>
 
   <ItemGroup>
