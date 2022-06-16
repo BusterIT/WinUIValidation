@@ -64,6 +64,7 @@ namespace WinUIValidation
             myPanel.Children.Add(ErrorMessage);
 
             Content = myPanel;
+            Loaded -= UserControl_Loaded;
         }
 
         private void GetObjectTree(object model, PropertyChangedEventArgs args)

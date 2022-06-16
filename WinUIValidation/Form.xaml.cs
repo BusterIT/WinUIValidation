@@ -41,6 +41,7 @@ namespace WinUIValidation
                 // Live control of submit button IsEnabled behaviour during validation state changes
                 _validationItems.ForEach(x => x.PropertyChanged += (o, args) => _submitButton.IsEnabled = !_validationItems.Any(v => !v._isValid));
             }
+            Loaded -= UserControl_Loaded;
         }
     }
 }
